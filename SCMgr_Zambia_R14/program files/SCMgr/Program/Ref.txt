@@ -1,0 +1,27 @@
+"Reference: VBA
+Location: C:\Program Files\Common Files\Microsoft Shared\VBA\VBA6\VBE6.DLL
+"
+"Reference: Access
+Location: C:\Program Files\Microsoft Office\OFFICE11\msacc.olb
+"
+"Reference: stdole
+Location: C:\WINDOWS\system32\stdole2.tlb
+"
+"Reference: DAO
+Location: C:\Program Files\Common Files\Microsoft Shared\DAO\Dao360.dll
+"
+"Reference: VBIDE
+Location: C:\Program Files\Common Files\Microsoft Shared\VBA\VBA6\VBE6EXT.OLB
+"
+"Reference: TACOMPLib
+Location: C:\WINDOWS\system32\tacomp.ocx
+"
+"Reference: MSComctlLib
+Location: C:\WINDOWS\system32\mscomctl.ocx
+"
+"Reference: Scripting
+Location: C:\WINDOWS\system32\scrrun.dll
+"
+"Reference: MSXML2
+Location: C:\WINDOWS\system32\msxml4.dll
+"

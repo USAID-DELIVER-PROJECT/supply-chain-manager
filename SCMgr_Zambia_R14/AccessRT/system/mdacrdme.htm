@@ -1,0 +1,1523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Microsoft Data Access Components version 2.5 Readme</TITLE>
+<style>
+BODY {
+	font: x-small Verdana, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF; }
+	
+h1, h2, h3, h4 {
+	font-family: verdana, Arial, Helvetica, sans-serif;	
+	font-weight: bold;
+	color: #000000; }
+	
+h1 {
+	font-size: 145%;
+	margin-bottom: .5em; }
+	
+h2 {
+	font-size: 125%;
+	margin-top: 1.5em;
+	margin-bottom: .5em; }
+	
+h3 {
+	font-size: 115%;
+	margin-top: 1.2em;
+	margin-bottom: .5em}
+	
+h4 {
+	font-size: 100%;
+	margin-top: 1.2em;
+	margin-bottom: .5em; }
+
+P  {
+	font: x-small Verdana, Arial, Helvetica, sans-serif;
+	color: #000000; }
+
+CODE {
+	font: 120% "Courier New", Courier, mono; }
+
+TD {
+	font-size: x-small; }
+
+A:LINK {
+	color: #0000FF; }
+	
+A:VISITED {
+	color: #660066; }
+	
+A:HOVER {
+	color: #FF9900; }
+	
+.label {
+	font-weight: bold; }
+	
+.tl {
+	margin-bottom: .75em; }
+	
+.atl {
+	padding-left: 1.5em;
+	padding-bottom: .75em; }
+	
+.cfe {
+	font-weight: bold; }
+	
+.mini {
+	font-size: smaller; }
+	
+LI {
+	margin-top: .75em;
+	margin-bottom: .75em; }
+	
+UL {
+	list-style: disc; }
+
+UL UL, OL OL, OL UL, UL OL {
+	margin-top: 1em;
+	margin-bottom: 1em; }
+	
+LI P {
+	margin-top: .5em;
+	margin-bottom: .5em; }
+
+.dt {
+	margin-bottom: -1em; }
+	
+.indent {
+	margin-left: 1.5em; }
+	
+SUP {
+	text-decoration: none;
+	font-size: smaller; }
+
+.product
+	{
+	text-align: right;
+	color: #333333;
+	font-size: smaller;
+	font-style: italic;
+	}
+</style></HEAD>
+<BODY>
+
+<H1><A NAME="mdacreadme"></A>Microsoft Data Access Components version 2.5 Readme</H1>
+
+<P>This document contains information about technical issues, known bugs, and limitations for the Microsoft® Data Access Components version 2.5. </P>
+
+<P>The MDAC typical redistribution installation contains the core components (ADO, OLE DB, and ODBC) and additional OLE DB providers and ODBC drivers for various data stores. For information about the MDAC SDK, which includes documentation, samples, tools, headers, and libraries, see the section in this readme about <A HREF="#mdacbugs">MDAC technical issues</A>.</P>
+
+<H2><A NAME="contents"></A>Contents</H2>
+
+<H3><A HREF="#techissues">Technical Issues, Known Bugs, and Limitations</A></H3>
+
+<UL type=disc>
+	<LI><A HREF="#mdacbugs">MDAC</A><BR><BR></LI>
+
+	<LI><A HREF="#ado">ADO and RDS</A><BR><BR></LI>
+
+	<LI><A HREF="#adox">ADOX</A><BR><BR></LI>
+
+	<LI><A HREF="#adomd">ADO MD</A><BR><BR></LI>
+
+	<LI><A HREF="#jro">JRO</A><BR><BR></LI>
+
+	<LI><A HREF="#microsoftdatalinkapi">Microsoft Data Link API</A><BR><BR></LI>
+
+	<LI><A HREF="#oledb">OLE DB</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbservicecomponents">OLE DB Service Components</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbforolap">OLE DB for Online Analytical Processing (OLAP)</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbproviderodbc">OLE DB Provider for ODBC</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbprovideroracle">OLE DB Provider for Oracle</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbprovidersqlserver">OLE DB Provider for SQL Server</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbproviderjet">OLE DB Provider for Microsoft Jet</A><BR><BR></LI>
+
+	<LI><A HREF="#oledbproviderdatashape">Data Shaping Service for OLE DB</A><BR><BR></LI>
+
+	<LI><A HREF="#odbc">Open Database Connectivity (ODBC)</A><BR><BR></LI>
+
+	<LI><A HREF="#odbcdriveroracle">ODBC Driver for Oracle</A><BR><BR></LI>
+
+	<LI><A HREF="#odbcdatasourceadministrator">ODBC Data Source Administrator</A><BR><BR></LI>
+
+	<LI><A HREF="#odbcdesktopdatabasedrivers">ODBC Desktop Database Drivers</A><BR><BR></LI>
+
+	<LI><A HREF="#sqlodbcdriver">SQL Server Client Data Access Components</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriver">Visual FoxPro ODBC Driver</A></LI>
+</UL>
+
+<H1><A NAME="techissues"></A>Technical Issues, Known Bugs, and Limitations</H1>
+
+<H1><A NAME="mdacbugs"></A>MDAC</H1>
+
+<P class=label><B>MDAC Filelist available in the MDAC Release Manifest</B></P>
+
+<P>You can find the complete list of MDAC files in the Release Manifest, located at http://www.microsoft.com/data/download.htm.</P>
+
+<P class=label><B>How to Install the MDAC 2.5 SDK from the Platform SDK </B></P>
+
+<P>You can install the Platform SDK in its entirety or as separate components from the MSDN Online Web site: http://msdn.microsoft.com/developer/sdk/platform.asp. An installation wizard will guide you through the process. Because other applications share Data Access components, you must close all other applications before installing the Platform SDK.</P>
+
+<P>The Platform SDK Setup Wizard allows you to choose typical or custom installation. A typical installation downloads the entire SDK, while a custom installation allows you to choose specific components: documentation, build environment, debuggers, tools, samples and source code, redistributable components, and other material. For Data Access components, you can choose to install any portion of the MDAC SDK: the APIs, documentation, samples, and so on. If you install the MDAC SDK, we recommend that you also choose to update your build environment through the installation process in order to keep the components synchronized.</P>
+
+<P class=label><B>HTML Help Files Require Updated HHCTRL.ocx on Windows NT 4.0</B></P>
+
+<P>If you are using Microsoft® NT 4.0 Service Pack 3, MDAC 2.5 will require an updated version of Hhctrl.ocx to properly display HTML Help files. Install the HTML Help update from the following location in the MSDN Online Web Workshop: http://msdn.microsoft.com/workshop/author/htmlhelp/localize.asp. Select the appropriate language for your platform.</P>
+
+<P class=label><B>MDAC Dependencies</B></P>
+
+<P>New functionality in OLE DB Core Services (Oledb32.dll), and thus in the MDAC stack, depends on two other .dlls that have shipped in versions of Internet Explorer, namely:
+
+<UL type=disc>
+	<LI>The Internet services exposed in Wininet.dll. Oledb32.dll will not load unless Wininet.dll, which began shipping in Internet Explorer version 3.0, is also installed.<BR><BR></LI>
+
+	<LI>The OLE DB version 2.5 Root Binder also depends on Urlmon.dll that began shipping in Internet Explorer version 4.0. If Internet Explorer 4.0 is not installed, or if Urlmon.dll is not installed, the Root Binder will return E_FAIL on calls to IBindResource::Bind. This would impact consumers' applications that are written to consume the new IBindResource interface introduced in OLE DB 2.5. This error would be returned to ADO when an object is opened with a URL instead of with a connection string.</LI>
+</UL>
+
+<P class=label><B>Errors with SQL Server</B></P>
+
+<P>If you install MDAC 2.5 on a computer running applications that access SQL Server 6.5 through the Microsoft OLE DB Provider for SQL Server or the Microsoft SQL Server ODBC Driver, and if the catalog stored procedures installed on that Microsoft SQL Server 6.5 are not current, the provider or driver will generate the following warning messages:
+
+<UL type=disc>
+	<LI><B>OLE DB Provider for SQL Server</B>: The catalog stored procedures installed on server are version &lt;version#; version &lt;version# or later is required to support IDBSchemaRowset. Please contact your system administrator.<BR><BR></LI>
+
+	<LI><B>SQL Server ODBC Driver</B>: The ODBC catalog stored procedures installed on server re version &lt;version#; version &lt;version# or later is required to ensure proper operation. Please contact your system administrator.</LI>
+</UL>
+
+<P>If an application ignores this message, it may experience some problems (such as loss of schema information).</P>
+
+<P>To correct this:
+
+<UL type=disc>
+	<LI>You must install instcat.sql, that comes with MDAC 2.5 on the 6.5 server
+<P class=tl>- OR -</P></LI>
+
+	<LI>Install SQL Server 6.5 SP5 on the server. Installing SQL Server 6.5 SP5 automatically runs instcat.sql.</LI>
+</UL>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="ado"></A>ADO/RDS</H1>
+
+<P>This following provides late-breaking or other information that supplements the Microsoft ADO documentation.</P>
+
+<P><A HREF="#adotechnical">ADO/RDS Technical Issues</A></P>
+
+<P><A HREF="#adobugs">ADO/RDS Known Bugs and Limitations</A></P>
+
+<H2><A NAME="adotechnical"></A>Technical Issues</H2>
+
+<P class=label><B>Microsoft Internet Explorer Version 5.0 and XML</B></P>
+
+<P>Microsoft® Internet Explorer 5.0 is required to open a <B>Recordset</B> from an XML file.</P>
+
+<P class=label><B>Changes to the ADO 2.5 Fields Collection Since Windows 2000 Beta 2</B></P>
+
+<P>To enhance performance in ADO, additions and deletions to the <B>Fields</B> collections of the <B>Record</B> object, as well as changes to the value of an existing field, are cached until the <B>Update</B> method is called. When <B>Update</B> is called, all the changes are all made as a batch.</P>
+
+<P>Each field has a <B>Status</B> property, and if an error occurs during an update, the <B>Status</B> property enables you to determine which fields have been successfully added, deleted, or changed. Fields with a pending status will not be committed if a <B>Record</B> object is closed, or goes out of scope before <B>Update</B> is called.</P>
+
+<P>Two methods have been added for the <B>Fields</B> collection: <B>Resync</B> and <B>CancelUpdate</B>. An additional parameter has been added to the <B>Append</B> method which allows you to specify the value of a field when you append it. The <B>Resync</B> method retrieves current values for fields from the server, and it takes <B>ResyncEnum</B> as its sole parameter (default value is <B>adResyncAllValues</B>). <B>Resync</B> does not affect deleted fields. Deleted fields are still visible in the local cache until they are successfully deleted on an <B>Update</B> call. The <B>Fields.Count</B> property also does not change on a field deletion until <B>Update</B> is called and the field has been successfully deleted.</P>
+
+<P>The <B>Field</B> object of the <B>Record</B> object has three new properties, <B>Status</B>, <B>OriginalValue,</B> and <B>UnderlyingValue</B>. The <B>Status</B> property of the <B>Field</B> object indicates the current state of the field, that is, <B>adFieldPendingUpdate</B> for a field that has new value but for which <B>Update</B> has not yet been called. <B>OriginalValue</B> and <B>UnderlyingValue</B> are similar to the same properties on the <B>Recordset</B> object's <B>Field</B> object.</P>
+
+<P class=label><B>Changes to ADO 2.5 URL Binding Since Windows 2000 Beta 2</B></P>
+
+<P>To simplify URL binding, you can use "URL=" in a connection string. For example:</P>
+
+<PRE><CODE>rec.Open "someDirectory", "URL=http://someComputer/someFolder/", adModeReadWrite
+</CODE></PRE>
+
+<P>The following constants have been eliminated: <B>adOpenURLBind</B>, <B>adCmdURLBind</B>, and <B>adOpenStreamFromURL</B>.</P>
+
+<P class=label><B>Change in Setup: RDS DataFactory Set to Safe Mode During Setup</B></P>
+
+<P>The Remote Data Service (RDS) setup has changed in MDAC 2.5. The RDS <B>DataFactory</B> is now automatically set to "safe" mode for both upgrades and clean installations of Windows 2000. (MDAC 2.5 ships with Windows 2000.) Previously, MDAC setup did not change the <B>DataFactory</B> settings of an existing RDS installation.</P>
+
+<P>This change only applies to Windows 2000. If you install MDAC 2.5 on a computer running Windows NT 4.0 or Windows 95/98, there is no change in setup behavior. On these systems, existing <B>DataFactory</B> settings are preserved when upgrading to MDAC 2.5.</P>
+
+<P class=indent><B><B>Note&nbsp;&nbsp;&nbsp;</B></B>Setup for MDAC 2.5 or later will set the <B>DataFactory</B> to "safe" mode only once, during the first installation. Therefore, if a computer running Windows NT 4.0 or Windows 98/95 receives a clean installation (no prior versions of MDAC have been installed) of MDAC 2.5 or later AND the <B>DataFactory</B> is later configured for "unrestricted" use, then the configuration will be maintained when the computer is upgraded to Windows 2000. For the same reason, upgrading from one Release Candidate 3 or later version of Windows 2000 to another, or to a later version of MDAC, will not change the "safe" mode configuration again.</P>
+
+<P class=label><B>MSADC Virtual Root Defaults to "Access Denied" </B></P>
+
+<P>Starting with Build 2168 of Windows 2000, after a clean install the MSADC virtual root will default to "access denied" for all IP addresses and Domain Names. This means that, on clean installs, no computers will be able to connect to the MSADC vroot on these computers and, therefore, all RDS applications will not work until the steps below are taken.</P>
+
+<P>Please note that if you upgrade to build 2168 or greater of Windows 2000 from a Windows NT 4.0 machine or an earlier build of Windows 2000, the current settings for MSADC vroot will be preserved and the steps below are unnecessary.</P>
+
+<P>To enable RDS, the server administrator must follow these steps:
+
+<OL>
+	<LI>Click <B>Start</B>, point to <B>Programs</B>, and then point to <B>Administrative Tools</B>. Click <B>Internet Services Manager</B>.<BR><BR></LI>
+
+	<LI>Expand the &lt;computer name&gt; in the left pane.<BR><BR></LI>
+
+	<LI>Expand the "Default Web Site."<BR><BR></LI>
+
+	<LI>Right-click on the "MSADC" virtual directory and select <B>Properties</B>.<BR><BR></LI>
+
+	<LI>On the <B>Directory Security</B> tab, under <B>IP address and domain name restrictions</B>, click <B>Edit</B>. The <B>IP Address and Domain Name Restrictions</B> dialog box will appear.<BR><BR></LI>
+
+	<LI>To enable RDS-based applications and pages on this server, do either of the following:
+<UL type=disc>
+	<LI>If you want all clients to access RDS-based pages and applications, select <B>Granted Access</B>.<BR><BR></LI>
+
+	<LI>If you want to grant access only to selected clients, click <B>Add</B> to enter their IP addresses or domain names. For more information about setting IP address and domain name restrictions, see the IIS documentation.</LI>
+</UL>
+</LI>
+</OL>
+
+<H2><A NAME="adobugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Client Cursor Engine and OLE DB 2.5 Interfaces</B></P>
+
+<P>The Client Cursor Engine does not implement the OLE DB 2.5 interfaces. As a result, if you open a <B>Recordset</B> on a version 2.5 OLE DB provider and specify <B>adUseClient</B> as the <B>CursorLocation</B>, certain properties will not be accurate, for example, <B>RecordCount</B> will always return -1.</P>
+
+<P class=label><B>Extended Properties in the Data Shaping Service and Remoting Provider</B></P>
+
+<P>When using the Data Shaping Service for OLE DB or the OLE DB Remoting provider, the "Extended Properties" property value is available even when "Persist Sensitive Authinfo" is false. Users should be aware that the "Extended Properties" property is not secure and should avoid putting sensitive information into extended properties. When using the Data Shaping Service via service components (as ADO does), the extended properties can be set in two ways:
+
+<UL type=disc>
+	<LI>The user can explicitly set the "Extended Properties".<BR><BR></LI>
+
+	<LI>If the Data Shaping Service does not support any properties specified in the connection string , the service components will put them into "Extended Properties".</LI>
+</UL>
+
+<P class=indent><B><B>Note&nbsp;&nbsp;&nbsp;</B></B>The PWD property of the Microsoft OLE DB Provider for ODBC is a provider-specific property that is not supported by the Data Shaping Service or the Remoting Provider. This means that service components will put the PWD property into the "Extended Properties" property and it will not be secure. Users are encouraged to use "PASSWORD=" instead of "PWD=" in the connection string.</P>
+
+<P class=label><B>Opening a Record from a URL</B></P>
+
+<P>When using a URL to open a <B>Record</B>, you must use forward slashes rather than back slashes. For example, the following code will work correctly:</P>
+
+<PRE><CODE>Dim r As New Record 
+r.Open "SomeDirectory", "url=http://someComputer/someFolder"
+</CODE></PRE>
+
+<P>However, the following code will cause an error:</P>
+
+<PRE><CODE>Dim r As New Record 
+r.Open "SomeDirectory", "url=http:\\someComputer\someFolder"
+</CODE></PRE>
+
+<P class=label><B>Blocking Operations</B></P>
+
+<P>If you specify <B>adAsyncFetchNonBlocking</B> as an option, the <B>Open</B> method will not operate asynchronously, but rather will block until the operation completes.</P>
+
+<P class=label><B>Stream Object Does Not Correctly Handle Some Character Sets</B></P>
+
+<P>Some characters have different sizes when in a sentence than when not in a sentence. This causes problems for the <B>Stream</B> object when attempting to determine the length of a string. Character sets affected include ISO-2022-JP, ISO-2022-KR, HZ-GB-2312, and UTF-7.</P>
+
+<P class=label><B>Change in Error for Opening Connections with Non Existent .udl Files</B></P>
+
+<P>When you try to open a Connection using a path to a .udl file that does not exist, you will receive a "File not found" error. This is a change from previous versions of ADO in which you would receive a "Provider not found" error.</P>
+
+<P class=label><B>Opening and Closing a Record Creates an Empty File</B></P>
+
+<P>If you create a file using the <B>Record </B>object's <B>Open </B>method with the OLE DB Provider for Internet Publishing, a two-byte file will be created. That is, if you immediately close the <B>Record</B>, you will have a file with a size of two bytes.</P>
+
+<P class=label><B>Errors with the OLE DB Provider for ODBC</B></P>
+
+<P>When using the OLE DB Provider for ODBC and accessing a BLOB column in a <B>Recordset</B>, you can not mix the methods used to access the data. That is, you can not access a field's value with the <B>GetChunk</B> method for part of the data and then use the <B>Value</B> property to get the rest of the data. For example, you will receive an error on the second line of code in the following example:</P>
+
+<PRE><CODE>v = rs("BlobColumn").GetChunk(10)
+Debug.Print rs("BlobColumn").Value
+</CODE></PRE>
+
+<P>If you use <B>GetChunk</B> to start reading a BLOB column you must continue to do so. Mixing the <B>GetChunk</B> method and the <B>Value</B> property will result in error -2147217887.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="adox"></A>ADOX</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ADO Extensions for DDL and Security (ADOX) documentation.</P>
+
+<P><A HREF="#adoxtechnical">ADOX Technical Issues</A></P>
+
+<P><A HREF="#adoxbugs">ADOX Known Bugs and Limitations</A></P>
+
+<H2><A NAME="adoxtechnical"></A>Technical Issues</H2>
+
+<P class=label><B>Required/Optional Properties of Tables, Indexes, and Columns</B></P>
+
+<P>Your data provider may support not all properties of <B>Table</B>, <B>Index</B>, and <B>Column</B> objects. An error will occur if you have set a value for a property that is not supported by the provider. For new <B>Table</B>, <B>Index</B>, or <B>Column</B> objects, the error will occur when the object is appended to the collection. For existing objects, the error will occur when setting the property.</P>
+
+<P>When creating <B>Table</B>, <B>Index</B>, or <B>Column</B> objects, the existence of an appropriate default value for an optional property does not guarantee that the property is supported by your provider. For more information about which properties your provider supports, see your provider documentation.</P>
+
+<P class=label><B>Using ADOX with Microsoft OLE DB Providers</B></P>
+
+<P>Certain features of ADOX are unsupported, depending upon your OLE DB data provider. ADOX is fully supported with the OLE DB Provider for Microsoft Jet. The unsupported features with the Microsoft OLE DB Provider for SQL Server, the Microsoft OLE DB Provider for ODBC, or the Microsoft OLE DB Provider for Oracle are listed below. ADOX is not supported by any other Microsoft OLE DB providers.
+
+<OL start=7>
+	<LI><B>Microsoft OLE DB Provider for SQL Server</B>&nbsp;&nbsp;&nbsp;All ADOX objects, collections, properties, and methods are supported except for those listed here:
+<UL type=disc>
+	<LI><B>Catalog</B>: <B>Create</B> method.<BR><BR></LI>
+
+	<LI><B>Tables</B>: Properties for existing tables are read-only (properties for new tables can be read/write).<BR><BR></LI>
+
+	<LI><B>Views</B>: Not supported.<BR><BR></LI>
+
+	<LI><B>Procedures</B>: <B>Append</B> method, <B>Delete</B> method, <B>Command</B> property.<BR><BR></LI>
+
+	<LI><B>Keys</B>: <B>Append</B> method, <B>Delete</B> method.<BR><BR></LI>
+
+	<LI><B>Users</B>: Not supported.<BR><BR></LI>
+
+	<LI><B>Groups</B>: Not supported.</LI>
+</UL>
+</LI>
+
+	<LI><B>Microsoft OLE DB Provider for ODBC&nbsp;&nbsp;&nbsp;</B>All ADOX objects, collections, properties, and methods are supported except for those listed here:
+<UL type=disc>
+	<LI><B>Catalog</B>: <B>Create</B> method.<BR><BR></LI>
+
+	<LI><B>Tables</B>: <B>Append</B> method, <B>Delete</B> method. Properties for existing tables are read-only (properties for new tables can be read/write).<BR><BR></LI>
+
+	<LI><B>Views</B>: <B>Append</B> method, <B>Delete</B> method, <B>Command</B> property.<BR><BR></LI>
+
+	<LI><B>Procedures</B>: <B>Append</B> method, <B>Delete</B> method, <B>Command</B> property.<BR><BR></LI>
+
+	<LI><B>Indexes</B>: <B>Append</B> method, <B>Delete</B> method.<BR><BR></LI>
+
+	<LI><B>Keys</B>: <B>Append</B> method, <B>Delete</B> method.<BR><BR></LI>
+
+	<LI><B>Users</B>: Not supported.<BR><BR></LI>
+
+	<LI><B>Groups</B>: Not supported.</LI>
+</UL>
+</LI>
+
+	<LI><B>Microsoft OLE DB Provider for Oracle&nbsp;&nbsp;&nbsp;</B>All ADOX objects, collections, properties, and methods are supported except for those listed here:
+<UL type=disc>
+	<LI><B>Catalog</B>: <B>Create</B> method.<BR><BR></LI>
+
+	<LI><B>Tables</B>: <B>Append</B> method, <B>Delete</B> method. Properties for existing tables are read-only (properties for new tables can be read/write).<BR><BR></LI>
+
+	<LI><B>Views</B>: <B>Append</B> method, <B>Delete</B> method, <B>Command</B> property.<BR><BR></LI>
+
+	<LI><B>Procedures</B>: <B>Append</B> method, <B>Delete</B> method, <B>Command</B> property.<BR><BR></LI>
+
+	<LI><B>Indexes</B>: <B>Append</B> method, <B>Delete</B> method.<BR><BR></LI>
+
+	<LI><B>Keys</B>: <B>Append</B> method, <B>Delete</B> method.<BR><BR></LI>
+
+	<LI><B>Users</B>: Not supported.<BR><BR></LI>
+
+	<LI><B>Groups</B>: Not supported.</LI>
+</UL>
+</LI>
+</OL>
+
+<H2><A NAME="adoxbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="adomd"></A>ADO MD</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ADO MD documentation.</P>
+
+<H2><A NAME="adomdtechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="adomdbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="jro"></A>JRO</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft Jet and Replication Objects documentation.</P>
+
+<P><A HREF="#jrotechnical">JRO Technical Issues</A></P>
+
+<P><A HREF="#jrobugs">JRO Known Bugs and Limitations</A></P>
+
+<H2><A NAME="jrotechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="jrobugs"></A>Known Bugs and Limitations</H2>
+
+<P>Databases made replicable in code that have never been opened in Microsoft Access will always have local projects (forms, reports, macros, modules) and they can never be changed to make the project replicable. This is because the system table that controls this functionality (mSysAccessObjects) does not exist if the database was never opened in Access prior to making the database replicable. Once the database is made replicable, the user cannot change the replicability of the project.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="microsoftdatalinkapi"></A>Microsoft Data Link API</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft Data Link API documentation.</P>
+
+<P><A HREF="#datalinktechnical">Microsoft Data Link Technical Issues</A></P>
+
+<P><A HREF="#datalinkbugs">Microsoft Data Link Known Bugs and Limitations</A></P>
+
+<H2><A NAME="datalinktechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="datalinkbugs"></A>Known Bugs and Limitations</H2>
+
+<P><B>Only One Instance of PromptDataSource Allowed</B></P>
+
+<P>Only one instance of the Data Link Properties dialog box can be open at a given time. Calling <B>IDBPromptInitialize::PromptDataSource</B> to create a second object without releasing the first will cause unpredictable results. </P>
+
+<P class=label><B>Creating Remote or Out-of-Process Providers is Not Supported</B></P>
+
+<P>The version 2.5 release of the Data Link API does not support creating remote or out-of-process providers. Calling IDataInitialize::CreateDBInstanceEx, and similar methods, for anything other than an in-process provider will fail.</P>
+
+<P class=label><B>Shared Exclusive Flag Translates to Share Deny Read and Share Deny Write</B></P>
+
+<P>The DB_MODE_SHARE_EXCLUSIVE flag is the resulting value when DB_MODE_SHARE_DENY_READ and DB_MODE_SHARE_DENY_WRITE are combined by OR. If DB_MODE_SHARE_EXCLUSIVE is set on input, the Data Link user interface will show "Share Deny Read" and "Share Deny Write" as checked, but "Share Exclusive" will not be checked.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledb"></A>OLE DB</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft OLE DB documentation.</P>
+
+<P><A HREF="#oledbtechnical">OLE DB Technical Issues</A></P>
+
+<P><A HREF="#oledbbugs">OLE DB Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbtechnical"></A>Technical Issues</H2>
+
+<P class=label><B>Ignore 64-bit Data Type Support in Oledb.h</B></P>
+
+<P>In the Oledb.h header file, ignore conditional preprocessor directives that generate support for 64-bit data types. The directives test for the value, _WIN64, and generate support for features that will be introduced in a future release. </P>
+
+<H2><A NAME="oledbbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbservicecomponents"></A>OLE DB Service Components</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft OLE DB Service Components documentation.</P>
+
+<P><A HREF="#sctechissues">OLE DB Service Components Technical Issues</A></P>
+
+<P><A HREF="#scbugs">OLE DB Service Components Known Bugs and Limitations</A></P>
+
+<H2><A NAME="sctechissues"></A>Technical Issues</H2>
+
+<P class=label><B>Session Pooling Should Not Be Used with SSPROP_ENABLEFASTLOAD</B></P>
+
+<P>When using the OLE DB Provider for SQL Server, the provider-specific property SSPROP_ENABLEFASTLOAD can be used to obtain a special form of the OLE DB Session object, one that supports the IRowsetFastLoad interface. However, when using this property, session pooling should not be used. When session pooling is enabled, the Session object returned to the consumer may be taken from a pool. Because the existing session may not have been created with SSPROP_ENABLEFASTLOAD, it may not support the IRowsetFastLoad interface.</P>
+
+<H2><A NAME="scbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbforolap"></A>OLE DB for Online Analytical Processing (OLAP)</H1>
+
+<P>The OLE DB for OLAP release notes provide late-breaking or other information that supplements the Microsoft OLE DB for OLAP documentation.</P>
+
+<P><A HREF="#oledbolaptechnical">OLE DB for OLAP Technical Issues</A></P>
+
+<P><A HREF="#oledbolapbugs">OLE DB for OLAP Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbolaptechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="oledbolapbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbproviderodbc"></A>OLE DB Provider for ODBC</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft OLE DB Provider for ODBC documentation.</P>
+
+<P><A HREF="#oledbproviderodbctechnical">OLE DB Provider for ODBC Technical Issues</A></P>
+
+<P><A HREF="#oledbproviderodbcbugs">OLE DB Provider for ODBC Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbproviderodbctechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="oledbproviderodbcbugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B><I>dwFlags</I> on IAccessor::CreateAccessor </B></P>
+
+<P>This provider ignores <I>dwFlags</I> when calling <B>IAccessor::CreateAccessor</B> and will not validate or honor settings for DBBINDFLAGS_HTML or any other flag in this field. The consumer should still set dwFlags to 0.</P>
+
+<P><B>Server Options are Reset when Service Components are Enabled</B></P>
+
+<P>The resource pooling implementation of the OLE DB Service Components does not reset server options when returning a data source and session to the pool. For example, if the command SET QUOTED_IDENTIFIER OFF is sent to SQL Server on a session, and that session is returned to the pool, the server option is not reset. Thus the consumer may select an active connection from the pool that has certain server options set differently than intended. If these server options, such as QUOTED_IDENTIFIER, have been set to values other than their defaults, the state on active connections is not reset when the objects are returned to the pool. Therefore, it is necessary for the consumer to reset these options as desired, or to disable the OLE DB Service Components to allow the DBMS to control these server options.</P>
+
+<P class=label><B>Connection Pooling is Required for New Connections in a Distributed Transaction</B></P>
+
+<P>A new connection cannot be created inside a distributed transaction unless ODBC connection pooling is being used. ODBC will enlist the connection in the transaction.</P>
+
+<P class=label><B>Connection Attributes Not Reset When Destroyed or Returned to a Pool</B></P>
+
+<P>The OLE DB Provider for ODBC does not reset all connection attributes when connections are destroyed or returned to a pool. Developers may want to verify or reset connection attributes after a connection is received from a pool. Consult the <I>ODBC Programmer's Reference</I> documentation about <B>SQLSetConnectAttr</B> for a listing of connection attributes. Microsoft SQL Server users should also consult the <I>SQL Server Books Online</I> for a listing of connection attributes specific to SQL Server.</P>
+
+<P class=label><B>Batch Updates and Multiple Results Return Only One Result Set</B></P>
+
+<P>When issuing two update statements in a batch and requesting multiple results against the OLE DB Provider for ODBC, only one result set is returned. The error occurs when the batch statement is executed using SQLPrepare and SQLExecute. If the batch update is performed using SQLExecDirect, two sets of results are properly returned. Note that the OLE DB Provider for ODBC uses the Prepare/Execute calls and will only return one result set. The workaround is to use the OLE DB Provider for SQL Server, which uses SQLExecDirect and performs properly.</P>
+
+<P class=label><B>Batch Updates Lose Conflict Information for More Than One Conflicting Row</B></P>
+
+<P>When performing a batch update through the OLE DB Provider for ODBC to SQL Server, conflict information is lost if there is more than one conflicting row. The first conflicting row in the batch will be marked conflicting and will maintain its edit status. However, any subsequent conflicting rows will not be marked conflicting and will be set back to an edit mode of <B>adEditNone</B> without their changes affected on the server. The workaround is to use the OLE DB Provider for SQL Server (SQLOLEDB).</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbprovideroracle"></A>OLE DB Provider for Oracle</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft OLE DB Provider for Oracle documentation.</P>
+
+<P><A HREF="#oledbprovideroracletechnical">OLE DB Provider for Oracle Technical Issues</A></P>
+
+<P><A HREF="#oledbprovideroraclebugs">OLE DB Provider for Oracle Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbprovideroracletechnical"></A>Technical Issues</H2>
+
+<P>To enable the OLE DB Provider for Oracle to work with Oracle client software, the client's registry must be modified according to the table below. </P>
+
+<TABLE border=1 cellpadding=5 frame=below rules=rows>
+
+<TR VALIGN="top">
+<TD class=label width=16%><B>Oracle Client</B></TD>
+<TD class=label width=43%><B>Windows NT or Windows 95/98</B></TD>
+<TD class=label width=41%><B>Windows 2000</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>7.x</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="xa73.dll"</P>
+
+<P class=indent>"OracleSqlLib"="SQLLib18.dll"</P>
+
+<P class=indent>"OracleOciLib"="ociw32.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="xa73.dll"</P>
+
+<P class=indent>"OracleSqlLib"="SQLLib18.dll"</P>
+
+<P class=indent>"OracleOciLib"="ociw32.dll"</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>8.0</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="xa80.dll"</P>
+
+<P class=indent>"OracleSqlLib"="sqllib80.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="xa80.dll"</P>
+
+<P class=indent>"OracleSqlLib"="sqllib80.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>8.1</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="oraclient8.dll"</P>
+
+<P class=indent>"OracleSqlLib"="orasql8.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="oraclient8.dll"</P>
+
+<P class=indent>"OracleSqlLib"="orasql8.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>For Windows 2000 systems</B>
+
+<OL>
+	<LI>Run RegEdit.<BR><BR></LI>
+
+	<LI>Under the RegKey HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI, edit OracleOciLib and set it to the correct values in the previous table. </LI>
+</OL>
+
+<P class=indent><B>Note</B>&nbsp;&nbsp;&nbsp;If this key has not been added automatically by setup, add "OracleOciLib" to the registry.</P>
+
+<P><B>For Windows NT 4.0 or Windows 95/98 systems</B>
+
+<OL>
+	<LI>Run RegEdit.<BR><BR></LI>
+
+	<LI>Under the RegKey HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Transaction Server\Local Computer\My Computer, edit OracleOciLib and set it to the correct values in the previous table. </LI>
+</OL>
+
+<P class=indent><B>Note</B>&nbsp;&nbsp;&nbsp;This key must be added manually using RegEdit. Contact Product Support Services for instructions to install the latest Hotfix containing the registry value "OracleOciLib."</P>
+
+<H2><A NAME="oledbprovideroraclebugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Incompatibility with COM+</B></P>
+
+<P>Due to changes to the XA_CLOSE implementation in Oracle 8i client software, the Microsoft OLE DB Provider for Oracle and Microsoft ODBC Driver for Oracle contained in MDAC 2.5 do not work inside of COM+. This is a known problem and will be fixed in Oracle patch 8.1.5.02. Prior to the release of the Oracle patch, the only work around is to host components outside of COM+.</P>
+
+<P class=label><B><I>dwFlags</I> on IAccessor::CreateAccessor </B></P>
+
+<P>This provider ignores <I>dwFlags</I> when calling <B>IAccessor::CreateAccessor</B> and will not validate or honor settings for DBBINDFLAGS_HTML or any other flag in this field. The consumer should still set <I>dwFlags</I> to 0.</P>
+
+<P class=label><B>Errors When Using Oracle 7.x Servers</B></P>
+
+<P>Using the OLE DB Provider for Oracle against an Oracle 7.x server may produce an error when performing an outer join. In an outer join, all columns are potentially nullable; however, Oracle 7.x may report that a column in an outer join is non-nullable and therefore generate an error when a resulting column contains a null value. The workaround is to use Oracle 8.x servers.</P>
+
+<P class=label><B>Transactions Required for Select Statements Against Oracle 8.x Databases</B></P>
+
+<P>When accessing an Oracle 8.x database using a "select...for update" statement, you must first start a transaction or you will receive a "Fetch out of sequence (ORA-01002)" error.</P>
+
+<P class=label><B>Oracle Server Converts Empty Strings to Null Values</B></P>
+
+<P>When updating an Oracle database using either the ODBC Driver for Oracle or the OLE DB Provider for Oracle, be aware that Oracle will convert empty strings to NULL. When using ADO's <B>Update</B> method, you may receive the error "The specified row could not be located for updating; Some values may have been changed since it was last read." (80040e38). This occurs because the Oracle server converts the empty string to NULL, but the ADO <B>Recordset</B> stores the empty string.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbprovidersqlserver"></A>OLE DB Provider for SQL Server</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft OLE DB Provider for SQL Server documentation.</P>
+
+<P><A HREF="#oledbprovidersqlservertechnical">OLE DB Provider for SQL Server Technical Issues</A></P>
+
+<P><A HREF="#oledbprovidersqlserverbugs">OLE DB Provider for SQL Server Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbprovidersqlservertechnical"></A>Technical Issues</H2>
+
+<P>There are no known technical issues at this time.</P>
+
+<H2><A NAME="oledbprovidersqlserverbugs"></A>Known Bugs and Limitations</H2>
+
+<P><B>Server Options are Reset when Service Components are Enabled</B></P>
+
+<P>The resource pooling implementation of the OLE DB Service Components does not reset server options when returning a data source and session to the pool. For example, if the command SET QUOTED_IDENTIFIER OFF is sent to SQL Server on a session, and that session is returned to the pool, the server option is not reset. Thus the consumer may select an active connection from the pool that has certain server options set differently than intended. If these server options, such as QUOTED_IDENTIFIER, have been set to values other than their defaults, the state on active connections is not reset when the objects are returned to the pool. Therefore, it is necessary for the consumer to reset these options as desired, or to disable the OLE DB Service Components to allow the DBMS to control these server options.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbproviderjet"></A>OLE DB Provider for Microsoft Jet</H1>
+
+<P>The following provides late-breaking or other information that supplements the OLE DB Provider for Microsoft Jet documentation.</P>
+
+<P><A HREF="#oledbproviderjettechnical">OLE DB Provider for Microsoft Jet Technical Issues</A></P>
+
+<P><A HREF="#oledbproviderjetbugs">OLE DB Provider for Microsoft Jet Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbproviderjettechnical"></A>Technical Issues</H2>
+
+<P>The Microsoft® Jet 4.0 database engine includes enabling all interfaces for Unicode. Data is now provided in Unicode (internationally enabled) format rather than ANSI. </P>
+
+<H2><A NAME="oledbproviderjetbugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Installing Jet 4.0 Provider Prohibits Use of Jet 3.51 Provider</B></P>
+
+<P>Installing the OLE DB Provider for Microsoft Jet 4.0 will replace several files, prohibiting the use of the OLE DB Provider for Microsoft Jet 3.51. You might have some performance issues accessing older .mdb files unless you use Access 2000 to convert them to the new Microsoft Jet 4.0 format.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="oledbproviderdatashape"></A>Data Shaping Service for OLE DB</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft Data Shaping Service for OLE DB documentation.</P>
+
+<P><A HREF="#oledbproviderdatashapetechnical">Data Shaping Service for OLE DB Technical Issues</A></P>
+
+<P><A HREF="#oledbproviderdatashapebugs">Data Shaping Service for OLE DB Known Bugs and Limitations</A></P>
+
+<H2><A NAME="oledbproviderdatashapetechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="oledbproviderdatashapebugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Not in Documentation: Data Types Supported by the Data Shaping Service</B></P>
+
+<P>Following is a list of OLE DB data types that the Data Shaping Service for OLE DB can use in the New clause. For ADO equivalents, see the ADO DataTypeEnum documentation.</P>
+
+<TABLE border=1 cellpadding=5 frame=below rules=rows>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_BOOL </TD>
+<TD width=50%>DBTYPE_I2 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_BSTR </TD>
+<TD width=50%>DBTYPE_I4 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_BYTES </TD>
+<TD width=50%>DBTYPE_I8 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_CY </TD>
+<TD width=50%>DBTYPE_NUMERIC </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_DATE </TD>
+<TD width=50%>DBTYPE_R4 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_DBDATE </TD>
+<TD width=50%>DBTYPE_R8 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_DBTIME </TD>
+<TD width=50%>DBTYPE_STR </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_DBTIMESTAMP </TD>
+<TD width=50%>DBTYPE_UI1 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_DECIMAL </TD>
+<TD width=50%>DBTYPE_UI2 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_ERROR </TD>
+<TD width=50%>DBTYPE_UI4 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_FILETIME </TD>
+<TD width=50%>DBTYPE_UI8 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_GUID </TD>
+<TD width=50%>DBTYPE_VARNUMERIC </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>DBTYPE_I1</TD>
+<TD width=50%>DBTYPE_WSTR </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="odbc"></A>Open Database Connectivity (ODBC)</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ODBC documentation.</P>
+
+<P><A HREF="#odbctechnical">ODBC Technical Issues</A></P>
+
+<P><A HREF="#odbcbugs">ODBC Known Bugs and Limitations</A></P>
+
+<H2><A NAME="odbctechnical"></A>Technical Issues</H2>
+
+<P class=label><B>32-bit ODBC Clients and Drivers Recommended</B></P>
+
+<P>Unless the driver exposes CONFIGDSN, the ANSI equivalent of CONFIGDSNW, 16-bit ODBC clients cannot add, configure, or remove UNICODE ODBC drivers. The workaround is to use 32-bit APIs that support UNICODE. Microsoft, MERANT, Simba Technologies, and others make 32-bit drivers available for all major databases.</P>
+
+<P class=label><B>Microsoft Transaction Server Transactions</B></P>
+
+<P>For information about participating or enlisting in a Microsoft Transaction Server transaction, consult the Microsoft Transaction Server documentation. Detailed information is provided for driver developers and application writers.</P>
+
+<P class=label><B>Automatic Transaction Enlistment Requires Connection Pooling</B></P>
+
+<P>ODBC cannot have automatic transaction enlistment without having connection pooling enabled.</P>
+
+<H2><A NAME="odbcbugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Locked-down Systems Prevent Creation of ODBC DSNs</B></P>
+
+<P>In a locked-down system, such as Zero Administration Windows, Windows 2000, or Windows Terminal Server, the user does not have privileges to write to the HKLM registry tree. Because of this, applications that create ODBC DSNs, including DSN-less connections using the ODBC Driver for Microsoft Jet, will fail. The workaround is to create the DSNs using the Windows Administrator account.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="odbcdriveroracle"></A>ODBC Driver for Oracle</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ODBC Driver for Oracle documentation.</P>
+
+<P><A HREF="#odbcdriveroracletechnical">ODBC Driver for Oracle Technical Issues</A></P>
+
+<P><A HREF="#odbcdriveroraclebugs">ODBC Driver for Oracle Known Bugs and Limitations</A></P>
+
+<H2><A NAME="odbcdriveroracletechnical"></A>Technical Issues</H2>
+
+<P>To enable the ODBC Driver for Oracle to work with Oracle client software, the client's registry must be modified according to the table below. </P>
+
+<TABLE border=1 cellpadding=5 frame=below rules=rows>
+
+<TR VALIGN="top">
+<TD class=label width=16%><B>Oracle Client</B></TD>
+<TD class=label width=43%><B>Windows NT or Windows 95/98</B></TD>
+<TD class=label width=41%><B>Windows 2000</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>7.x</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="xa73.dll"</P>
+
+<P class=indent>"OracleSqlLib"="SQLLib18.dll"</P>
+
+<P class=indent>"OracleOciLib"="ociw32.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="xa73.dll"</P>
+
+<P class=indent>"OracleSqlLib"="SQLLib18.dll"</P>
+
+<P class=indent>"OracleOciLib"="ociw32.dll"</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>8.0</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="xa80.dll"</P>
+
+<P class=indent>"OracleSqlLib"="sqllib80.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="xa80.dll"</P>
+
+<P class=indent>"OracleSqlLib"="sqllib80.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>8.1</TD>
+<TD width=43%>[HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Transaction Server\Local Computer\My Computer]
+<P class=indent>"OracleXaLib"="oraclient8.dll"</P>
+
+<P class=indent>"OracleSqlLib"="orasql8.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+<TD width=41%>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI]
+<P class=indent>"OracleXaLib"="oraclient8.dll"</P>
+
+<P class=indent>"OracleSqlLib"="orasql8.dll"</P>
+
+<P class=indent>"OracleOciLib"="oci.dll"</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>For Windows 2000 systems</B>
+
+<OL>
+	<LI>Run RegEdit.<BR><BR></LI>
+
+	<LI>Under the RegKey HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSDTC\MTxOCI, edit OracleOciLib and set it to Oci.dll. (The default is Ociw32.dll.)</LI>
+</OL>
+
+<P class=indent><B>Note</B>&nbsp;&nbsp;&nbsp;This key is added automatically by setup.</P>
+
+<P><B>For NT 4 or Windows 95/98 systems</B>
+
+<OL>
+	<LI>Run RegEdit.<BR><BR></LI>
+
+	<LI>Under the RegKey HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Transaction Server\Local Computer\My Computer, edit OracleOciLib and set it to Oci.dll. (The default is Ociw32.dll.)</LI>
+</OL>
+
+<P class=indent><B>Note</B>&nbsp;&nbsp;&nbsp;This key is must be added manually using RegEdit. Contact Product Support Services for instructions to install the latest HOTFIX containing the registry value "OracleOciLib."</P>
+
+<H2><A NAME="odbcdriveroraclebugs"></A>Known Bugs, Limitations, and Workarounds</H2>
+
+<P class=label><B>Incompatibility with COM+</B></P>
+
+<P>Due to changes to the XA_CLOSE implementation in Oracle 8i client software, the Microsoft OLE DB Provider for Oracle and Microsoft ODBC Driver for Oracle contained in MDAC 2.5 do not work inside of COM+. This is a known problem and will be fixed in Oracle patch 8.1.5.02. Prior to the release of the Oracle patch, the only work around is to host components outside of COM+.</P>
+
+<P class=label><B>Driver Returns Error Messages or Data Truncation Messages</B></P>
+
+<P>The driver may return error messages or data truncation messages when the Setup Wizard is not forced to guess the column definition. The default for the version 2.5 driver is "0".</P>
+
+<P class=label><B>Access Violation When Updating a Static Table</B></P>
+
+<P>The ODBC Driver for Oracle may encounter an access violation when deleting a row from a resultset clause. This is due to a bug that allows updates to a static table. </P>
+
+<P class=label><B>No Support for ODBC 3.0 and Later Datatypes</B></P>
+
+<P>The ODBC Driver for Oracle returns "[Microsoft][ODBC driver for Oracle]SQL data type out of range" when queried for ODBC 3.0 and later datatypes through SQLGetTypeInfo. The ODBC Driver for Oracle supports ODBC 2.5 types only.</P>
+
+<P class=label><B>Client Cursor Engine Cannot Update Databases via OLE DB Provider for ODBC with ODBC Driver for Oracle</B></P>
+
+<P>When using the OLE DB Provider for ODBC (MSDASQL) with the ODBC Driver for Oracle, there is not enough information provided in the Columns MetaData rowset returned by the IColumnsRowset interface for the Client Cursor Engine to perform updates (UpdateBatch method in ADO). The workaround is to use the OLE DB Provider for Oracle (MSDAORA) instead.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="odbcdatasourceadministrator"></A>ODBC Data Source Administrator</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ODBC Data Source Administrator documentation.</P>
+
+<P><A HREF="#odbcdatasourceadministratortechnical">ODBC Data Source Administrator Technical Issues</A></P>
+
+<P><A HREF="#odbcdatasourceadministratorbugs">ODBC Data Source Administrator Known Bugs and Limitations</A></P>
+
+<H2><A NAME="odbcdatasourceadministratortechnical"></A>Technical Issues</H2>
+
+<P>There are no technical issues at this time.</P>
+
+<H2><A NAME="odbcdatasourceadministratorbugs"></A>Known Bugs and Limitations</H2>
+
+<P class=label><B>Start Visual Studio Analyzer Button</B></P>
+
+<P>Clicking the <B>Start Visual Studio Analyzer</B> button on the <B>Tracing</B> tab of the ODBC Data Source Administrator will generate the following error message if Visual Studio Analyzer is not installed: "Failed to register ODBC as a Visual Studio Event Source."</P>
+
+<P class=label><B>Online help</B></P>
+
+<P>Right-clicking static labels in dialog boxes accessed from the ODBC Data Source Administrator does not bring up context-sensitive help. To access help for these controls, you must click the question mark button in the top right corner of the dialog box and then click the control. Right-click help is enabled for all buttons, option buttons, and check boxes.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="odbcdesktopdatabasedrivers"></A>ODBC Desktop Database Drivers</H1>
+
+<P>The following provides late-breaking or other information that supplements the Microsoft ODBC Desktop Database Drivers documentation.</P>
+
+<P><A HREF="#odbcdesktopdatabasedriverstechnical">ODBC Desktop Database Drivers Technical Issues</A></P>
+
+<P><A HREF="#odbcdesktopdatabasedriversbugs">ODBC Desktop Database Drivers Known Bugs and Limitations</A></P>
+
+<H2><A NAME="odbcdesktopdatabasedriverstechnical"></A>Technical Issues</H2>
+
+<P class=label><B>CREATE_DB Refers to Jet 4.0 Databases</B></P>
+
+<P>The ODBC Driver for Jet now interprets CREATE_DB to mean Jet 4.0 databases instead of Jet 3.x databases. Applications that previously created Jet 3.x databases, including Microsoft Project 98, will now create Jet 4.0 databases using this keyword. Jet 4.0 databases can be read using MDAC 2.1 or later, and Microsoft Access 2000 or later. The CREATE_DBV4 keyword has been added to allow applications to specify creation of Jet 4.0 databases.</P>
+
+<P class=label><B>Parameters</B></P>
+
+<P>Due to a change in the Jet 4.0 engine, parameters that are contained in sub-queries are inserted before parameters at the top level of the statement. The ODBC specification states that parameters are bound in the order that they appear in the SQL statement into which they are to be inserted. Then when the statement is executed, they are inserted in that order. This was the case in Jet 3.51, but with the Jet 4.0 the behavior has changed.</P>
+
+<H2><A NAME="odbcdesktopdatabasedriversbugs"></A>Known Bugs and Limitations</H2>
+
+<P>There are no known bugs or limitations at this time.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="sqlodbcdriver"></A>SQL Server Client Data Access Components</H1>
+
+<P><A HREF="#sqlodbcdriveroverview">Introduction</A></P>
+
+<P><A HREF="#sqlodbcdriverinstalling">Common Issues: Installing Instcat.sql on the Server</A></P>
+
+<P><A HREF="#sqlprovider">OLE DB Provider for SQL Server</A></P>
+
+<P><A HREF="#sqldriver">SQL Server ODBC Driver</A>
+
+<UL type=disc>
+	<LI><A HREF="#sqldriveroverview">Overview</A><BR><BR></LI>
+
+	<LI><A HREF="#sqldriverdocs">Documentation Sources Regarding Using ODBC with SQL Server</A><BR><BR></LI>
+
+	<LI><A HREF="#sqldriverdevenv">Using the Driver in a Development Environment</A><BR><BR></LI>
+
+	<LI><A HREF="#sqldrivercompatibility">Compatibility Issues</A></LI>
+</UL>
+
+<P><A HREF="#clientnetlibrary">Client Net-Library</A></P>
+
+<P><A HREF="#clientnetworkutility">Client Network Utility</A></P>
+
+<H2><A NAME="sqlodbcdriveroverview"></A>Introduction</H2>
+
+<P>MDAC includes Microsoft SQL Server client connectivity components that allow ADO, OLE DB, and ODBC clients to access SQL Server data.</P>
+
+<P>These are the SQL Server components included in MDAC:
+
+<UL type=disc>
+	<LI>OLE DB Provider for SQL Server<BR><BR></LI>
+
+	<LI>SQL Server ODBC driver<BR><BR></LI>
+
+	<LI>Subset of the SQL Server Client Net-Libraries<BR><BR></LI>
+
+	<LI>Client Network Utility to manage the network libraries.</LI>
+</UL>
+
+<P>The following sections of this Readme file describe how to use specific SQL Server components in this version of MDAC against various versions of SQL Server.</P>
+
+<H2><A NAME="sqlodbcdriverinstalling"></A>Common Issues</H2>
+
+<P>Issues common to both the OLE DB Provider for SQL Server and SQL Server ODBC driver are discussed in this section.</P>
+
+<H3>Installing Instcat.sql on the Server</H3>
+
+<P>The OLE DB Provider for SQL Server and the SQL Server ODBC driver use a set of system-stored procedures, known as catalog-stored procedures, to obtain information from the SQL Server system catalog. Each version of the OLE DB provider for SQL Server and the ODBC driver is developed to work with a specific version of the catalog stored procedures.</P>
+
+<P>The Instcat.sql file included with the OLE DB Provider for SQL Server version 07.01.0690 and the SQL Server ODBC driver version 3.70.0690 includes minor updates to the catalog-stored procedures which upgrade the procedures to the versions used by the OLE DB Provider for SQL Server version 07.01.0690 and the SQL Server ODBC driver version 3.70.0690. The Instcat.sql file shipped with the OLE DB provider for SQL Server version 07.01.0690 and the SQL Server ODBC driver version 3.70.0690 is the same as the Instcat.sql file shipped with SQL Server 7.0. SQL Server 7.0 sites need not run the Instcat.sql.</P>
+
+<P>The SQL Server system administrator must use the Instcat.sql script to upgrade the catalog-stored procedures to ensure the proper operation of the driver.&nbsp; Upgrading the catalog-stored procedures does not affect the operation of older SQL Server clients. This must be done for all versions of SQL Server from version 4.21a to 6.5. This upgrade is not needed if you have SQL Server 7.0.</P>
+
+<P>To upgrade the catalog stored procedures on SQL Server 4.21a, 6.0, or 6.5, the system administrator must run the Instcat.sql script using the isql utility (see the following instructions).</P>
+
+<P>Before making any changes to the master database, the system administrator should back it up. To run isql, your computer must be installed as a client workstation for SQL Server.</P>
+
+<P>At the command prompt, use the isql utility to run the Instcat.sqlscript. For example:</P>
+
+<P><CODE>C:&gt;ISQL /Usa /P<I>sa_password</I> /S<I>server_name </I></CODE></P>
+
+<P><CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/i<I>location</I>\Instcat.Sql</CODE></P>
+
+<P>where</P>
+
+<P><I>sa_password </I></P>
+
+<P class=indent>Is the system administrator's password.</P>
+
+<P><I>server_name </I></P>
+
+<P class=indent>Is the name of the server on which SQL Server resides.</P>
+
+<P><I>location </I></P>
+
+<P class=indent>Is the full path of the location of Instcat.Sql.</P>
+
+<P>The Instcat.sql script generates many messages. Most of these indicate how many rows were affected by the Transact-SQL statements issued by the script. Most of these messages can be ignored, although the output should be scanned for messages that indicate an execution error. When Instcat.sql is run on SQL Server version 6.0, the message "the object sp_MS_upd_sysobj_category does not exist" can be ignored.&nbsp; The last message should indicate that Instcat.sql completed successfully. The Instcat.sql script fails when there is not enough space available in the master database to store the catalog-stored procedures or to log the changes to existing procedures.</P>
+
+<P><A HREF="#sqlodbcdriver">Return to SQL Server Client Data Access Components</A></P>
+
+<H2><A NAME="sqlprovider"></A>OLE DB Provider for SQL Server</H2>
+
+<P>The OLE DB Provider for SQL Server version 07.01.0690 can be used to access SQL Server versions 7.0 and 6.5.</P>
+
+<P>Because the OLE DB Provider for SQL Server version 07.01.0690 is shipped with SQL Server 7.0, users of SQL Server 7.0 should refer to SQL Server 7.0 documentation for this driver instead of the documentation in this Readme file. SQL Server Books Online for SQL Server 7.0 is available on MSDN and also on Technet CDs.</P>
+
+<P>Users of SQL Server version 6.5 can look at MDAC SDK documentation for OLE DB Provider for SQL Server 7.0.</P>
+
+<P><A HREF="#sqlodbcdriver">Return to SQL Server Client Data Access Components</A></P>
+
+<H2><A NAME="sqldriver"></A>SQL Server ODBC Driver</H2>
+
+<P>This topic describes using the SQL Server ODBC driver version 3.70.0690 with SQL Server 6.5 or earlier.</P>
+
+<P>Because the SQL Server ODBC driver version 3.70.0690 is shipped with SQL Server 7.0, users of SQL Server 7.0 should refer to SQL Server 7.0 documentation for this driver instead of the documentation in this Readme file. SQL Server Books Online for SQL Server 7.0 is available on MSDN and also on Technet CDs.</P>
+
+<H3><A NAME="sqldriveroverview"></A>Overview</H3>
+
+<P>The SQL Server ODBC driver version 3.70.0690 is a Win32 ODBC version 3.51 driver. It can be used with applications written to either the ODBC 2.X or ODBC 3.X APIs. The driver works with SQL Server version 4.21a or later. The driver runs on Windows 95, Windows 98, Windows NT version 4.0.</P>
+
+<P>A Win32 SQL Server 7.0 client Network Utility (cliconfg.exe) is also installed with the SQL Server ODBC driver version 3.70.0690. This SQL Server Client Network Utility can be used with SQL Server version 4.21a or later.</P>
+
+<H3><A NAME="sqldriverdocs"></A>Documentation Sources Regarding Using ODBC with SQL Server</H3>
+
+<P>The SQL Server ODBC driver version 3.70.0690 is the same driver that is shipped with SQL Server 7.0. Users of SQL Server 7.0 can refer to SQL Server 7.0 documentation for the SQL Server ODBC driver version 3.70.0690. SQL Server Books Online for SQL Server 7.0 is available on MSDN and also on Technet CDs.</P>
+
+<P>When SQL Server ODBC driver version 3.70.0690 is used with SQL Server (version 4.21a, 6.0, or 6.5), the driver operates in the same manner as the older drivers. You can use the driver-specific information supplied with that version of SQL Server. This includes:
+
+<UL type=disc>
+	<LI>The Drvssrvr.hlp file that shipped with the earlier version of SQL Server.<BR><BR></LI>
+
+	<LI>The section "Programming ODBC for Microsoft SQL Server" in the SQL Server 6.5 manuals.<BR><BR></LI>
+
+	<LI>The white paper "Using ODBC with Microsoft SQL Server" available on MSDN.</LI>
+</UL>
+
+<P>The Sqlsodbc.hlp file that ships with the SQL Server ODBC Driver version 3.70.0690 contains only context-sensitive help for the SQL Server DSN Configuration wizard. The Drvssrvr.hlp file that shipped with earlier versions of the SQL Server ODBC driver contained driver-specific information for older versions of the driver. The information contained in the older versions of Drvssrvr.hlp is duplicated in the SQL Server 6.5 manual "Programming ODBC for Microsoft SQL Server."</P>
+
+<H3><A NAME="sqldriverdevenv"></A>Using the Driver in a Development Environment</H3>
+
+<P>The SQL Server ODBC driver uses driver-specific parameters for several ODBC function calls. #defines for these driver-specific parameters and driver-specific C and C++ programming structures are contained in the include file Odbcss.h.</P>
+
+<P>The SQL Server ODBC driver version 3.70.0690 works with the Odbcss.h file provided in the following sources:
+
+<UL type=disc>
+	<LI>SQL Server 7.0<BR><BR></LI>
+
+	<LI>SQL Server 6.5 Service Pack 2 (SP2) or later<BR><BR></LI>
+
+	<LI>MDAC SDK</LI>
+</UL>
+
+<P>The MDAC SDK is part of the Microsoft Developer Network Professional edition. The SDK can also be downloaded from the Microsoft Web site at http://www.microsoft.com/data. The SDK is also available from Microsoft Press in the "Microsoft ODBC 3.0 Software Development Kit and Programmer's Reference."</P>
+
+<H3><A NAME="sqldrivercompatibility"></A>Compatibility issues</H3>
+
+<P>Because ODBC driver version 3.70.0690 is shipped with SQL Server 7.0, users of SQL Server 7.0 should refer to the ODBC documentation in SQL Server 7.0. The compatibility issues documented in this section only apply when running this driver with earlier versions of SQL Server (4.21a, 6.0, and 6.5).</P>
+
+<P>The SQL Server ODBC driver version 3.70.0690 displays a new wizard when adding or configuring data sources in either the ODBC Administrator utility or when an application calls SQLConfigDataSource and asks the driver to prompt the user for information. Click the Help button in the wizard to access the wizard documentation.</P>
+
+<P>In the SQL Server ODBC Driver version 2.65 that shipped with SQL Server 6.5, the SQL_COPT_SS_PERF_QUERY_INTERVAL worked in seconds instead of the milliseconds it was documented to use (see Knowledge Base article Q157753). In the SQL Server ODBC driver version 3.70.0690, SQL_COPT_SS_PERF_QUERY_INTERVAL has been changed to work in milliseconds as documented.</P>
+
+<P>The following changes affect only applications written using the ODBC 3.X API. They do not affect applications written using the ODBC 2.X API. These changes should not impact the result set processing in most ODBC applications.</P>
+
+<P>In earlier versions of the SQL Server ODBC Driver, contiguous PRINT or RAISERROR statements in a batch or stored procedure return their messages together, in one result set. In the SQL Server ODBC Driver version 3.70.0690, the messages for each SQL statement are returned as separate result sets. You must call SQLMoreResults between each message to be positioned on the message for the next SQL statement. The messages from a single SQL statement, such as a DBCC statement, are all returned in a single result set and there is no need to call SQLMoreResults between each message.</P>
+
+<P>In earlier versions of the SQL Server ODBC Driver, a run-time error or a RAISERROR with a severity of 11 or higher on the first statement in a batch or stored procedure causes either SQLExecute, SQLExecDirect, or SQLParamData to return SQL_ERROR. In the SQL Server ODBC Driver version 3.70.0690, SQLExecute, SQLExecDirect, or SQLParamData returns SQL_ERROR only if no other statements are executed after the first statement. If any other statements are executed after the first (even a simple RETURN statement with no return value) then SQLExecute or SQLExecDirect returns SQL_SUCCESS_WITH_INFO. After processing the SQL_SUCCESS_WITH_INFO messages using SQLGetDiagRec, call SQLMoreResults to be positioned on the next result set.</P>
+
+<P>When earlier versions of the driver encountered an error on the first statement of a batch or stored procedure, the statement handle was available for use with another SQL statement after SQLExecute or SQLExecDirect returned SQL_ERROR. When the version 3.7 driver returns SQL_SUCCESS_WITH_INFO, the statement is not free to process another SQL statement until SQLMoreResults returns SQL_NO_DATA or until all result sets following the RAISERROR have been closed. If no result set follows the error message, then SQLCloseCursor cannot be called. SQLFreeStmt(SQL_CLOSE) or SQLMoreResults must be called to free the statement handle to process another SQL statement:</P>
+
+<PRE><CODE>CREATE PROCEDURE TestPrc @Parm1 as
+IF (@Parm1 IS NULL)
+BEGIN
+&nbsp;&nbsp;&nbsp;RAISERROR ('Parm1 cannot be NULL', 11, 1)
+&nbsp;&nbsp;&nbsp;RETURN
+END
+SELECT * FROM sysusers WHERE suid = @Parm1
+GO
+
+Execute the following:
+
+SQLExecDirect(hstmt, "{ call TestPrc (NULL) }", SQL_NTS);
+</CODE></PRE>
+
+<P>When using an older version of the SQL Server ODBC Driver, or if the application uses the ODBC 2.X API, then SQLExecDirect returns SQL_ERROR. After SQLGetDiagRec returns SQL_NO_DATA or SQLError returns SQL_NO_DATA_FOUND, the statement handle is free to execute another SQL statement.</P>
+
+<P>When using the SQL Server ODBC Driver version 3.70.0690 from an application written to the ODBC 3.X API, then SQLExecDirect returns SQL_SUCCESS_WITH_INFO. After SQLGetDiagRec returns SQL_NO_DATA, the statement handle cannot be used to process another SQL statement until SQLMoreResults returns SQL_NO_DATA or SQLFreeStmt(SQL_CLOSE) is called.</P>
+
+<P>In earlier versions of the SQL Server ODBC Driver, SQLExecute, SQLExecDirect, or SQLParamData returns SQL_SUCCESS when an application executes a UPDATE or DELETE statement that affects no rows. For this case, the version 3.7 driver still returns SQL_SUCCESS to applications written with the ODBC 2.X API, but it returns SQL_NO_DATA to applications written with the ODBC 3.X API. If either the ODBC 2.X application that receives SQL_SUCCESS or the ODBC 3.X application that receives SQL_NO_DATA then calls SQLRowCount, SQLRowCount returns a count of zero.</P>
+
+<P>ODBC 3.X more clearly defines the way results are returned than ODBC 2.X. Earlier versions of the SQL Server ODBC Driver returned the values of output parameters and return codes when the ODBC 2.X functions SQLFetch or SQLExtendedFetch returned SQL_NO_DATA on the last result set returned by a stored procedure. The SQL Server ODBC Driver version 3.70.0690 retains this behavior when called by ODBC 2.X applications.&nbsp; When the version SQL Server ODBC Driver version 3.70.0690 is called by ODBC 3.X applications, however, the driver does not return output parameters or return codes until SQLMoreResults returns SQL_NO_DATA.</P>
+
+<P><A HREF="#sqlodbcdriver">Return to SQL Server Client Data Access Components</A></P>
+
+<H2><A NAME="clientnetlibrary"></A>Client Net-Library</H2>
+
+<P>The OLE DB Provider for SQL Server and the SQL Server ODBC Driver use the SQL Server client Net-Libraries to communicate with the server. </P>
+
+<P>As part of the installation, MDAC installs all the newer Net-Libraries so that the the OLE DB Provider for SQL Server and the SQL Server ODBC Driver are in sync with the Net-Libraries.</P>
+
+<H2><A NAME="clientnetworkutility"></A>Client Network Utility</H2>
+
+<P>The version of the SQL Server Client Network Utility installed by MDAC is used by the SQL Server ODBC Driver version 3.70.0690 when creating data sources.</P>
+
+<P><A HREF="#sqlodbcdriver">Return to SQL Server Client Data Access Components</A></P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H1><A NAME="visualfoxproodbcdriver"></A>Visual FoxPro ODBC Driver</H1>
+
+<P>The following describes using the Microsoft Visual FoxPro ODBC Driver version 6.0a.</P>
+
+<P><A HREF="#visualfoxproodbcdriverinstallation">Installation Notes</A>
+
+<UL type=disc>
+	<LI><A HREF="#visualfoxproodbcdriversystem">System Requirements</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverwhatsnew">What's New in this Release</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverinstalling">Installing the Driver</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriveradding">Adding a Data Source</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverhelp">Help Files</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdrivernaming">Naming Conventions</A></LI>
+</UL>
+
+<P><A HREF="#visualfoxproodbcdriversupported">Supported Areas</A>
+
+<UL type=disc>
+	<LI><A HREF="#visualfoxproodbcdriverlanguage">Language Support</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverodbc">ODBC 3.51 Compliance</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverreferential">Referential Integrity</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverthread">Thread Support</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverdbase">Supported Versions of dBASE® IV Tables</A><BR><BR></LI>
+
+	<LI><A HREF="#visualfoxproodbcdriverinternational">International Support</A></LI>
+</UL>
+
+<P><A HREF="#visualfoxproodbcdriverunsupported">Unsupported Areas</A></P>
+
+<P><A HREF="#visualfoxproodbcdriverknown">Known Issues</A></P>
+
+<P><A HREF="#visualfoxproodbcdrivertroubleshooting">Troubleshooting</A></P>
+
+<P><A HREF="#visualfoxproodbcdriverbooks">Books</A></P>
+
+<H2><A NAME="visualfoxproodbcdriverinstallation"></A>Installation Notes</H2>
+
+<P class=label><B><A NAME="visualfoxproodbcdriversystem"></A>System Requirements</B></P>
+
+<P>To install the Visual FoxPro ODBC Driver, you need:
+
+<UL type=disc>
+	<LI>Windows NT 4 or later, Service Pack 5 recommended; or Windows 95/Windows 98 or later.<BR><BR></LI>
+
+	<LI>2 megabytes disk space.</LI>
+</UL>
+
+<P class=indent><B><B>Important&nbsp;&nbsp;&nbsp;</B></B>Visual FoxPro ODBC Driver is a 32-bit driver only. Windows 3.1 and Windows for Workgroups platforms are not supported.</P>
+
+<P>The Windows 2000 operating system installs only the English version of the VFP ODBC Driver. Previous versions of the driver localized in German, French, and Spanish will be overwritten by the English version.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverwhatsnew"></A>What's New in this Release</B></P>
+
+<P>The initial setting for SET REPROCESS is changed to 5 so that Visual FoxPro tries to lock a record for a limited number of times. If the attempted lock fails, Visual FoxPro generates an error.</P>
+
+<P>The Visual FoxPro settings for DELETED and NULL can now be set in the Driver Configuration Dialog or via the Connection String. The syntax is:
+
+<UL type=disc>
+	<LI>Null=Yes/No;<BR><BR></LI>
+
+	<LI>Deleted=No/Yes;</LI>
+</UL>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverinstalling"></A>Installing the Driver</B></P>
+
+<P>To install the Visual FoxPro ODBC Driver, run SETUP.EXE.</P>
+
+<P class=indent><B><B>Note&nbsp;&nbsp;&nbsp;</B></B>The Visual FoxPro ODBC Driver installation updates the ODBC components to ODBC 3.51 compliance if necessary. See the ODREADME.TXT file in your MSDASDK directory for additional information on enhancements or features of ODBC 3.51.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriveradding"></A>Adding a Data Source</B></P>
+
+<P>After installing, define a data source:
+
+<OL>
+	<LI>In Windows Control Panel, double-click the <B>Administrative Tools</B> icon.<BR><BR></LI>
+
+	<LI>Double-click the <B>Data Sources</B> (ODBC) icon.<BR><BR></LI>
+
+	<LI>Click <B>Add</B>.<BR><BR></LI>
+
+	<LI>Select <B>Microsoft Visual FoxPro Driver</B>.<BR><BR></LI>
+
+	<LI>In the <B>ODBC Visual FoxPro Setup</B> dialog box, enter a data source name.<BR><BR></LI>
+
+	<LI>Select either <B>Visual FoxPro database</B> (.DBC) or <B>Free Table</B> directory.<BR><BR></LI>
+
+	<LI>Enter the name of the database or the path to the free table, or click <B>Browse</B>.<BR><BR></LI>
+
+	<LI>Click <B>OK</B>, and then click <B>Close</B>.</LI>
+</OL>
+
+<P class=label><A NAME="visualfoxproodbcdriverhelp"></A><B>Help Files</B></P>
+
+<P>The Visual FoxPro ODBC Driver comes with two help files, located in the SYSTEM directory on Windows 95/Windows 98 or the SYSTEM32 directory on Windows NT/Windows 2000:
+
+<UL type=disc>
+	<LI>ODBCINST.CHM - General ODBC information which contains information on:
+<UL type=disc>
+	<LI>The ODBC Driver dialog box<BR><BR></LI>
+
+	<LI>The options that can be set in the drivers dialog box in the Control Panel</LI>
+</UL>
+</LI>
+
+	<LI>DRVVFP.CHM - Visual FoxPro ODBC Driver Setup Dialog Box Help file</LI>
+</UL>
+
+<P>You can find more information about the Visual FoxPro ODBC Driver in the Microsoft Data Access Components (MDAC) SDK, which is available at msdn.microsoft.com. (Open the MSDN Library Online and then the Platform SDK to find the MDAC SDK, which contains a section called ODBC Drivers.) The Visual FoxPro ODBC Driver section of the MDAC SDK contains information on:
+
+<UL type=disc>
+	<LI>Installing and Configuring<BR><BR></LI>
+
+	<LI>Using the Visual FoxPro Driver<BR><BR></LI>
+
+	<LI>Technical Reference<BR><BR></LI>
+
+	<LI>ODBC API<BR><BR></LI>
+
+	<LI>Visual FoxPro Language Reference<BR><BR></LI>
+
+	<LI>Error Messages</LI>
+</UL>
+
+<P class=label><B><A NAME="visualfoxproodbcdrivernaming"></A>Naming Conventions</B></P>
+
+<P>The Visual FoxPro ODBC Driver names columns based on expressions. For example, if you execute the following statement:</P>
+
+<P>&nbsp;&nbsp;&nbsp;&nbsp;SELECT MIN (customer_id) FROM customers</P>
+
+<P>the Visual FoxPro ODBC Driver returns min_customerid as the name of the column in the result set. If you would like to control the resulting field name, use the AS clause, as in this example:</P>
+
+<P>&nbsp;&nbsp;&nbsp;&nbsp;SELECT MIN(customer_id) AS minimum_custid FROM customers</P>
+
+<P><A HREF="#visualfoxproodbcdriver">Return to Visual FoxPro ODBC Driver</A></P>
+
+<H2><A NAME="visualfoxproodbcdriversupported"></A>Supported Areas</H2>
+
+<P>The following section describes areas of particular support by the Visual FoxPro ODBC Driver.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverlanguage"></A>Language Support</B></P>
+
+<P>Supported Versions of FoxBase+® and FoxPro Tables The Visual FoxPro ODBC Driver gives you access to Microsoft® FoxBase+®, FoxPro 1.x, FoxPro 2.x and Visual FoxPro tables. Also, the Visual FoxPro ODBC Driver allows you to access tables that are in a Visual FoxPro database container (.DBC file).</P>
+
+<P class=indent><B><B>Note&nbsp;&nbsp;&nbsp;</B></B>The Visual FoxPro ODBC Driver only allows transactions on tables within a Visual FoxPro database (.DBC file), not free tables.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverodbc"></A>ODBC 3.51 Compliance</B></P>
+
+<P>The Visual FoxPro ODBC Driver is ODBC Level 1 API compliant and also implements several Level 2 APIs. All supported APIs have been implemented at this time. Please report any problems you find regarding the APIs. The MDAC SDK help file documents supported functions and acceptable input parameters. In addition, Visual FoxPro SQL extends the SQL functionality available through the driver. See the Visual FoxPro Language Reference for the extended grammar.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverreferential"></A>Referential Integrity Support</B></P>
+
+<P>The Visual FoxPro ODBC Driver supports Visual FoxPro rules, triggers, and default values, provided they contain functions that are supported by the driver. See the MDAC SDK help file for details on which Visual FoxPro language elements are supported.</P>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverthread"></A>Thread Support</B></P>
+
+<P>The Visual FoxPro ODBC Driver can process queries in the background. However, you should avoid using connection pooling with the VFP ODBC Driver. Disable this feature if the driver is being called by a multi-threaded application. To do so, set <B>BackGroundFetch=No</B> in the connection string or clear the "Fetch data in background" check box in the Setup dialog box. For more information, see the "ODBC Visual FoxPro Setup Dialog Box" Help topic in DRVVFP.CHM or in the MDAC SDK help file.</P>
+
+<P class=label><B>Remote Views and Parameterized Views</B></P>
+
+<P class=tl>Any time SQLTables( ) is called, remote and parameterized views are excluded from the list. Local views based on parameterized views are not excluded, but will generate errors if you use them. If you call SQLTables( ) with a unique table name, however, you will find views (if they are present) so you can check for name conflicts.</P>
+<P class=label><B><A NAME="visualfoxproodbcdriverdbase"></A>Supported Versions of dBASE® IV Tables</B></P>
+
+<P>The Visual FoxPro ODBC Driver gives you access to dBASE 4 and earlier tables. The dBASE files are supported in the following manner:
+
+<UL type=disc>
+	<LI>dBASE(r) v2.x and 3.x: The files are read without conversion.<BR><BR></LI>
+
+	<LI>dBASE(r) v4.x and 5.x: If the files do not have memo fields and the table has fewer than 255 columns, the files are read.</LI>
+</UL>
+
+<P class=indent><B><B>Caution&nbsp;&nbsp;&nbsp;</B></B>If a dBASE ® v4.x or 5.x file has associated index files (.MDX, .NDX), the Visual FoxPro ODBC Driver will not update the file properly and the indexes will be corrupted. These files should be accessed read-only.
+
+<UL type=disc>
+	<LI>dBASE v4.x and 5.x tables with memo fields: These files require conversion in the full Visual FoxPro for Windows product before using them with the Visual FoxPro ODBC Driver. The driver will not read or convert files.</LI>
+</UL>
+
+<P class=label><B><A NAME="visualfoxproodbcdriverinternational"></A>International Support</B></P>
+
+<P>The driver is DBCS enabled.</P>
+
+<P>You can now set the collating sequence for index ordering. The list of supported collating sequences can be found in the description of SET COLLATE in the Visual FoxPro Language Reference section of the MDAC SDK.</P>
+
+<P>The default collating sequence is "MACHINE". The collating sequence can be changed by executing either a SET COLLATE TO Language with the ODBC C API SQLExecDirect( ), by calling SQLPrepare( ) and SQLExec( ) (see the ODBC SDK Reference manual p. 42-44), or by selecting a different collating sequence from the driver options in the Data Source Setup dialog.</P>
+
+<P class=indent><B><B>Note&nbsp;&nbsp;&nbsp;</B></B>The FOXPRO.INT file is installed in the system directory. If it is removed, the collating sequences on Eastern European code page machines will not work.</P>
+
+<P><A HREF="#visualfoxproodbcdriver">Return to Visual FoxPro ODBC Driver</A></P>
+
+<H2><A NAME="visualfoxproodbcdriverunsupported"></A>Unsupported Areas</H2>
+
+<P>Refresh is not supported in rules and triggers.</P>
+
+<P>The Visual FoxPro ODBC Driver section of the MDAC SDK help file describes the supported commands and functions and includes an updated list of the unsupported commands and functions. Any command or function not listed in the Help file is not supported.</P>
+
+<P>Parameterized views work in a trigger only if the parameter has been assigned a value before the view is opened. Interactive input of a parameter value is not allowed in ODBC.</P>
+
+<P>The Visual FoxPro ODBC Driver does not support remote views to other ODBC data sources; however, local views (non-parameterized) are fully supported.</P>
+
+<H2><A NAME="visualfoxproodbcdriverknown"></A>Known Issues</H2>
+
+<P>If you insert, delete, or update a Visual FoxPro table via the Visual FoxPro ODBC Driver, you might get a "Trigger Failed" message. Check for unsupported commands in the trigger.</P>
+
+<P>INDEX ON is not supported in this release.</P>
+
+<P>If a table is opened exclusively and the same table is accessed by another user with SET EXCLUSIVE OFF, then the error "Option Value Changed" is returned by Visual FoxPro ODBC Driver instead of "File is in use by another."</P>
+
+<P>MSQuery returns a "Cannot Open File" error when creating a table with a field name that starts with a number. For example, the field name "1995 Sales" is not allowed. Visual FoxPro does not allow the creation of field names that begin with a number, but MSQuery does.</P>
+
+<P class=label><B>Issues with Empty Date Value</B></P>
+
+<P>In the VFP ODBC Driver, the strict default for Empty Date Value is 0 (off). The driver will handle any invalid date by converting the value to the empty date value "&nbsp; /&nbsp; /&nbsp; ". ODBC clients might interpret the VFP ODBC Driver empty date value in different ways. You should verify the way your application handles this value, so you can interpret and use this data effectively.</P>
+
+<P><B>Differences Between the Previous FoxPro ISAM Driver and the Visual FoxPro ODBC Driver</B></P>
+
+<P>The VFP ODBC Driver does not support column names longer than 10 characters or column names containing spaces, unless the table is contained in a database container (.dbc).</P>
+
+<P>You cannot independently select indexes to be used with a given table.</P>
+
+<P>The VFP ODBC Driver places newly created tables in the default directory of the application using the driver, not in the location pointed to by the data source. To ensure that tables are placed in a specific directory, indicate this in the SQL code. For example: "CREATE TABLE C:\MyFolder\myTable (col1 i, col2 c(10))".</P>
+
+<P><A HREF="#visualfoxproodbcdriver">Return to Visual FoxPro ODBC Driver</A></P>
+
+<H2><A NAME="visualfoxproodbcdrivertroubleshooting"></A>Troubleshooting</H2>
+
+<P>If you have trouble installing the driver, try the following and then try to reinstall again:
+
+<OL>
+	<LI>Clean-boot the machine. For example, under Windows 95, start in Safe Mode.<BR><BR></LI>
+
+	<LI>Close all other applications, including virus software, third-party shells, or toolbars such as <B>Microsoft Office Manager</B>.<BR><BR></LI>
+
+	<LI>If the computer has video or system ROM shadowing, disable these options before reinstalling.<BR><BR></LI>
+
+	<LI>Check that the .EXE file is not corrupted.</LI>
+</OL>
+
+<P>If you are still having problems:
+
+<UL type=disc>
+	<LI>Make sure that you are running on a clean configuration when testing issues.</LI>
+</UL>
+
+<P>Use the <B>Tracing</B> tab of the Microsoft ODBC Data Source Administrator to help determine the cause of problems. To open the ODBC Data Source Administrator in Windows 2000, open the Windows Control Panel, double-click the <B>Administrative Tools</B> icon, and then double-click the <B>Data Sources (ODBC)</B> icon. (In previous versions of Windows, open the Control Panel and double-click <B>32-bit ODBC</B> or <B>ODBC</B> to open the <B>ODBC Data Source Administrator</B> dialog box.)
+
+<UL type=disc>
+	<LI>Check to see if the latest build of the driver is installed. To view the version:
+<OL>
+	<LI>In the Windows Control Panel, double-click the <B>Administrative Tools</B> icon, and then double-click the <B>Data Sources (ODBC)</B> icon.<BR><BR></LI>
+
+	<LI>Click on the <B>Drivers</B> tab.</LI>
+</OL>
+</LI>
+
+	<LI>You can generate an ODBC Trace Log by using the ODBC Data Source Administrator:
+<OL>
+	<LI>In the Windows Control Panel, double-click the <B>Administrative Tools</B> icon, and then double-click the <B>Data Sources (ODBC)</B> icon.<BR><BR></LI>
+
+	<LI>Click on the <B>Tracing</B> tab.<BR><BR></LI>
+
+	<LI>Specify a When to trace option.<BR><BR></LI>
+
+	<LI>Specify a log file name.<BR><BR></LI>
+
+	<LI>Click <B>Start Tracing Now</B>.</LI>
+</OL>
+</LI>
+</UL>
+
+<P>Now, when you execute your code, all the C ODBC API calls, their input parameters, and their output are written to the log file. The ODBC log file is ASCII text that you can view in any standard ASCII text editor such as Word, Notepad, or WordPad. Occasionally, it might be necessary to include the trace log in a bug report. Since the ODBC trace log can be lengthy, copy only the last four or five function calls and paste them into a separate document before sending the bug report.</P>
+
+<H2><A NAME="visualfoxproodbcdriverbooks"></A>Books</H2>
+
+<UL type=disc>
+	<LI><I>Microsoft ODBC 3.0 Programmer's Reference and SDK Guide</I> (ISBN#: 1-57231-516-4 from Microsoft Press) provides basic reference information.<BR><BR></LI>
+
+	<LI><I>Inside ODBC</I> (ISBN#: 1-55615-815-7 from Microsoft Press) provides a good background on the development of the ODBC specifications and a CD with ODBC code examples.<BR><BR></LI>
+
+	<LI><I>Database Developer's Guide with Visual C++</I> (ISBN#: 0-672-30613-1 from SAMS Publishing) has several good C++ examples that use the ODBC API.</LI>
+</UL>
+
+<P><A HREF="#visualfoxproodbcdriver">Return to Visual FoxPro ODBC Driver</A></P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+<hr>
+<H2>Copyright</H2>
+
+<P>Information in this document, including URL and other Internet web site references, is subject to change without notice and is provided for informational purposes only. The entire risk of the use or results of the use of this document remains with the user, and Microsoft Corporation makes no warranties, either express or implied. The example companies, organizations, products, people and events depicted herein are fictitious. No association with any real company, organization, product, person or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation. </P>
+
+<P>Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.</P>
+
+<P>&copy; 1991-1999 Microsoft Corporation. All rights reserved.</P>
+
+<P>Microsoft, MS-DOS, Windows, Windows NT, ActiveX, Visual Studio, Visual C++, Visual FoxPro, and MSDN are either registered trademarks or trademarks of Microsoft Corporation in the U.S.A. and/or other countries.</P>
+
+<P>The names of actual companies and products mentioned herein may be the trademarks of their respective owners.</P>
+
+<P><A HREF="#contents">Return to MDAC Table of Contents</A></P>
+
+</BODY>
+</HTML>
